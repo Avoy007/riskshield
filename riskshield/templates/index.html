@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block page_title %}Dashboard{% endblock %}
+
+{% block content %}
+
+<!-- ── Stat Cards ── -->
+<div class="stats-grid">
+  <div class="stat-card stat-card-1">
+    <div class="stat-header">
+      <div class="stat-icon stat-icon-1">👤</div>
+      <span class="stat-trend">↑ Active</span>
+    </div>
+    <div class="stat-value" id="stat-customers">—</div>
+    <div class="stat-label">Total Customers</div>
+  </div>
+
+  <div class="stat-card stat-card-2">
+    <div class="stat-header">
+      <div class="stat-icon stat-icon-2">🏦</div>
+      <span class="stat-trend">↑ Active</span>
+    </div>
+    <div class="stat-value" id="stat-accounts">—</div>
+    <div class="stat-label">Total Accounts</div>
+  </div>
+
+  <div class="stat-card stat-card-3">
+    <div class="stat-header">
+      <div class="stat-icon stat-icon-3">💸</div>
+      <span class="stat-trend">↑ Active</span>
+    </div>
+    <div class="stat-value" id="stat-transactions">—</div>
+    <div class="stat-label">Transactions</div>
+  </div>
+
+  <div class="stat-card stat-card-4">
+    <div class="stat-header">
+      <div class="stat-icon stat-icon-4">⚠️</div>
+    </div>
+    <div class="stat-value" id="stat-risks">—</div>
+    <div class="stat-label">Risk Events</div>
+  </div>
+</div>
+
+<!-- ── Alerts + Distribution ── -->
+<div class="two-col">
+
+  <!-- High Risk Alerts -->
+  <div class="panel">
+    <div class="section-header">
+      <div class="section-title">High Risk Alerts</div>
+    </div>
+    <div id="alerts-list" class="alert-list">
+      <div class="empty-state">
+        <div class="empty-state-icon">⏳</div>
+        <div class="empty-state-text">Loading alerts…</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Risk Distribution -->
+  <div class="panel">
+    <div class="section-header">
+      <div class="section-title">Risk Distribution</div>
+    </div>
+    <div id="risk-dist">
+      <div class="empty-state">
+        <div class="empty-state-icon">⏳</div>
+        <div class="empty-state-text">Loading…</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ── Recent Transactions ── -->
+<div class="full-row">
+  <div class="panel">
+    <div class="section-header">
+      <div class="section-title">Recent Transactions</div>
+      <a href="/accounts" style="font-size:12px;color:var(--accent-cyan);text-decoration:none;">View all →</a>
+    </div>
+    <div class="table-wrapper" id="recent-tx">
+      <div class="empty-state">
+        <div class="empty-state-icon">⏳</div>
+        <div class="empty-state-text">Loading transactions…</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

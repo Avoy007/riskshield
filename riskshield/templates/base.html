@@ -1,0 +1,85 @@
+<!-- templates/base.html — Shared layout -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}RiskShield{% endblock %} — Risk Management</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>" />
+</head>
+<body>
+
+<div id="toast-container" class="toast-container"></div>
+
+<div class="layout">
+  <!-- ── Sidebar ── -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-mark">
+        <div class="logo-icon">🛡️</div>
+        <div>
+          <div class="logo-text">RiskShield</div>
+          <div class="logo-sub">Financial Services</div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Overview</div>
+      <a href="/" class="nav-item">
+        <span class="nav-icon">⬡</span> Dashboard
+      </a>
+
+      <div class="nav-section-label">Data</div>
+      <a href="/customers" class="nav-item">
+        <span class="nav-icon">👤</span> Customers
+      </a>
+      <a href="/accounts" class="nav-item">
+        <span class="nav-icon">🏦</span> Accounts
+      </a>
+
+      <a href="/transactions" class="nav-item">
+  <span class="nav-icon">💰</span> Transactions
+</a>
+
+      <div class="nav-section-label">Risk</div>
+      <a href="/risks" class="nav-item">
+        <span class="nav-icon">⚠️</span> Risk Management
+      </a>
+      <a href="/add-data" class="nav-item">
+        <span class="nav-icon">＋</span> Add Data
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="system-status">
+        <div class="status-dot"></div>
+        System Operational
+      </div>
+    </div>
+  </aside>
+
+  <!-- ── Main ── -->
+  <div class="main-content">
+    <!-- Top Bar -->
+    <header class="topbar">
+      <div class="topbar-title">{% block page_title %}Dashboard{% endblock %}</div>
+      <div class="topbar-meta">
+        <span class="topbar-time" id="topbar-time"></span>
+        <span class="topbar-badge" id="alert-badge">— ALERTS</span>
+        <button id="theme-toggle" onclick="toggleTheme()" style="cursor:pointer;">🌙</button>
+      </div>
+    </header>
+
+    <!-- Page Content -->
+    <main class="page-content">
+      {% block content %}{% endblock %}
+    </main>
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='main.js') }}"></script>
+{% block extra_scripts %}{% endblock %}
+</body>
+</html>

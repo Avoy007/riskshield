@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Accounts{% endblock %}
+{% block page_title %}Accounts{% endblock %}
+
+{% block content %}
+
+<div class="full-row">
+  <div class="section-header">
+    <div class="section-title">All Accounts</div>
+    <span class="section-count" id="account-count">Loading…</span>
+  </div>
+
+  <div class="table-wrapper">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Customer</th>
+          <th>Email</th>
+          <th>Type</th>
+          <th>Balance</th>
+          <th>Transactions</th>
+        </tr>
+      </thead>
+      <tbody id="accounts-tbody">
+        <tr>
+          <td colspan="6">
+            <div class="skeleton" style="margin:20px;"></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock %}

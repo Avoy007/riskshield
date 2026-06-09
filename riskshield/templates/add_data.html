@@ -1,0 +1,155 @@
+{% extends "base.html" %}
+{% block title %}Add Data{% endblock %}
+{% block page_title %}Add Data{% endblock %}
+
+{% block content %}
+
+<!-- Tab Switcher -->
+<div class="form-tabs">
+  <button class="form-tab active" data-tab="customer" onclick="switchTab('customer')">
+    👤 Add Customer
+  </button>
+  <button class="form-tab" data-tab="account" onclick="switchTab('account')">
+    🏦 Add Account
+  </button>
+  <button class="form-tab" data-tab="risk" onclick="switchTab('risk')">
+    ⚠️ Log Risk
+  </button>
+</div>
+
+<!-- ── Panel: Add Customer ── -->
+<div class="form-panel active" id="panel-customer">
+  <div class="form-card">
+    <div class="form-title">New Customer</div>
+    <div class="form-subtitle">Register a new customer in the system</div>
+
+    <form id="form-customer">
+      <div class="form-group">
+        <label class="form-label" for="c_name">Full Name</label>
+        <input class="form-input" id="c_name" type="text" placeholder="e.g. Arjun Sharma" required />
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="c_email">Email Address</label>
+          <input class="form-input" id="c_email" type="email" placeholder="arjun@example.com" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="c_phone">Phone Number</label>
+          <input class="form-input" id="c_phone" type="tel" placeholder="+91 98765 43210" required />
+        </div>
+      </div>
+
+      <button type="submit" class="btn-submit">Add Customer →</button>
+    </form>
+  </div>
+</div>
+
+<!-- ── Panel: Add Account ── -->
+<div class="form-panel" id="panel-account">
+  <div class="form-card">
+    <div class="form-title">New Account</div>
+    <div class="form-subtitle">Open a new account for an existing customer</div>
+
+    <form id="form-account">
+      <div class="form-group">
+        <label class="form-label" for="a_customer">Select Customer</label>
+        <select class="form-select" id="a_customer" required>
+          <option value="">Loading customers…</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="a_type">Account Type</label>
+          <select class="form-select" id="a_type" required>
+            <option value="">Select Type</option>
+            <option value="Savings">Savings</option>
+            <option value="Checking">Checking</option>
+            <option value="Loan">Loan</option>
+            <option value="Fixed Deposit">Fixed Deposit</option>
+            <option value="Current">Current</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="a_balance">Opening Balance (₹)</label>
+          <input class="form-input" id="a_balance" type="number" min="0" step="0.01" placeholder="0.00" required />
+        </div>
+      </div>
+
+      <button type="submit" class="btn-submit">Create Account →</button>
+    </form>
+  </div>
+</div>
+
+<!-- ── Panel: Log Risk ── -->
+<div class="form-panel" id="panel-risk">
+  <div class="form-card">
+    <div class="form-title">Log Risk Event</div>
+    <div class="form-subtitle">Record a new risk, assessment, and mitigation plan</div>
+
+    <form id="form-risk">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="r_transaction">Transaction</label>
+          <select class="form-select" id="r_transaction" required>
+            <option value="">Loading…</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="r_department">Department</label>
+          <select class="form-select" id="r_department" required>
+            <option value="">Loading…</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="r_type">Risk Type</label>
+          <select class="form-select" id="r_type" required>
+            <option value="">Select Type</option>
+            <option value="Credit Risk">Credit Risk</option>
+            <option value="Market Risk">Market Risk</option>
+            <option value="Operational Risk">Operational Risk</option>
+            <option value="Liquidity Risk">Liquidity Risk</option>
+            <option value="Compliance Risk">Compliance Risk</option>
+            <option value="Fraud Risk">Fraud Risk</option>
+            <option value="Cyber Risk">Cyber Risk</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="r_level">Risk Level</label>
+          <select class="form-select" id="r_level" required>
+            <option value="">Select Level</option>
+            <option value="High">🔴 High</option>
+            <option value="Medium">🟡 Medium</option>
+            <option value="Low">🟢 Low</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="r_prob">
+          Probability — <span id="r_prob_display" style="color:var(--accent-cyan);">50%</span>
+        </label>
+        <input class="form-input" id="r_prob" type="range" min="1" max="100" value="50"
+          style="padding:6px 0; cursor:pointer;" />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="r_desc">Risk Description</label>
+        <textarea class="form-textarea" id="r_desc" placeholder="Describe the risk in detail…" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="r_action">Mitigation Action</label>
+        <textarea class="form-textarea" id="r_action" placeholder="Describe the mitigation strategy…" required></textarea>
+      </div>
+
+      <button type="submit" class="btn-submit">Log Risk →</button>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

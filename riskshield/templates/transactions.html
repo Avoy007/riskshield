@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}Transactions{% endblock %}
+{% block page_title %}Transactions{% endblock %}
+
+{% block content %}
+
+<div class="panel">
+
+  <div class="section-header">
+    <div class="section-title">Recent Transactions</div>
+  </div>
+
+  <div class="table-wrapper">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Customer</th>
+          <th>Account</th>
+          <th>Amount</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody id="txnTable"></tbody>
+    </table>
+  </div>
+
+</div>
+
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+fetch('/api/transactions')
+.then(res => res.json())
+.then(data => {
+    let rows = '';
+
+    data.forEach(t => {
+        rows += `
+        <tr>
+            <td><span class="id-tag">#${t.transaction_id}</span></td>
+            <td>${t.customer_name}</td>
+            <td><span class="acct-badge acct-${t.account_type.toLowerCase()}">${t.account_type}</span></td>
+            <td class="${t.amount > 0 ? 'balance-positive' : ''}">₹${t.amount}</td>
+            <td class="mono-sm">${t.transaction_date}</td>
+        </tr>`;
+    });
+
+    document.getElementById('txnTable').innerHTML = rows;
+});
+</script>
+{% endblock %}

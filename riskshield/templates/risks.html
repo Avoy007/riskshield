@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block title %}Risk Management{% endblock %}
+{% block page_title %}Risk Management{% endblock %}
+
+{% block content %}
+
+<!-- Filter Buttons -->
+<div style="display:flex; gap:10px; margin-bottom:20px; flex-wrap:wrap;">
+  <button class="filter-btn active" data-level="" style="
+    background:var(--bg-card); border:1px solid var(--border-bright);
+    color:var(--accent-cyan); padding:8px 18px; border-radius:20px;
+    font-family:var(--font-display); font-size:12px; font-weight:700;
+    cursor:pointer; transition:all 0.2s; letter-spacing:0.04em;">
+    All Risks
+  </button>
+  <button class="filter-btn" data-level="High" style="
+    background:rgba(239,68,68,0.08); border:1px solid rgba(239,68,68,0.25);
+    color:#ef4444; padding:8px 18px; border-radius:20px;
+    font-family:var(--font-display); font-size:12px; font-weight:700;
+    cursor:pointer; transition:all 0.2s; letter-spacing:0.04em;">
+    🔴 High &nbsp;<span id="count-high">—</span>
+  </button>
+  <button class="filter-btn" data-level="Medium" style="
+    background:rgba(245,158,11,0.08); border:1px solid rgba(245,158,11,0.25);
+    color:#f59e0b; padding:8px 18px; border-radius:20px;
+    font-family:var(--font-display); font-size:12px; font-weight:700;
+    cursor:pointer; transition:all 0.2s; letter-spacing:0.04em;">
+    🟡 Medium &nbsp;<span id="count-medium">—</span>
+  </button>
+  <button class="filter-btn" data-level="Low" style="
+    background:rgba(16,185,129,0.08); border:1px solid rgba(16,185,129,0.25);
+    color:#10b981; padding:8px 18px; border-radius:20px;
+    font-family:var(--font-display); font-size:12px; font-weight:700;
+    cursor:pointer; transition:all 0.2s; letter-spacing:0.04em;">
+    🟢 Low &nbsp;<span id="count-low">—</span>
+  </button>
+
+  <div style="margin-left:auto; display:flex; align-items:center;">
+    <span class="section-count" id="risk-count">Loading…</span>
+  </div>
+</div>
+
+<!-- Risk Table -->
+<div class="table-wrapper">
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Risk ID</th>
+        <th>Customer</th>
+        <th>Risk Type</th>
+        <th>Department</th>
+        <th>Level</th>
+        <th>Probability</th>
+        <th>Description</th>
+        <th>Mitigation</th>
+      </tr>
+    </thead>
+    <tbody id="risks-tbody">
+      <tr>
+        <td colspan="8">
+          <div class="skeleton" style="margin:20px;"></div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<style>
+  .filter-btn.active {
+    background: rgba(56,189,248,0.12) !important;
+    border-color: var(--accent-cyan) !important;
+    box-shadow: 0 0 12px rgba(56,189,248,0.15);
+  }
+</style>
+
+{% endblock %}
